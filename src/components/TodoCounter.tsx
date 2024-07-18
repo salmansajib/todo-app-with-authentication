@@ -1,7 +1,8 @@
-function TodoCounter() {
+function TodoCounter({ todos }) {
   return (
     <p>
-      <b>0</b> / 0 todos completed
+      <b> {todos.filter((todo) => todo.completed).length} </b> / {todos.length}{" "}
+      todos completed
     </p>
   );
 }
