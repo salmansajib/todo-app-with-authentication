@@ -1,17 +1,15 @@
-import { Todo } from "../lib/types";
+import { useContext } from "react";
 import DeleteButton from "./DeleteButton";
+import { TodoContext } from "../contexts/TodosContextProvider";
 
-type TodoListProps = {
-  todos: Todo[];
-  handleToggleCompleted: (id: number) => void;
-  handleDeleteTodo: (id: number) => void;
-};
+function TodoList() {
+  const context = useContext(TodoContext);
+  if (!context) {
+    throw new Error("Forgot to add provider");
+  }
 
-function TodoList({
-  todos,
-  handleToggleCompleted,
-  handleDeleteTodo,
-}: TodoListProps) {
+  const { todos, handleToggleCompleted, handleDeleteTodo } = context;
+
   return (
     <ul>
       {todos.length === 0 && (
@@ -35,7 +33,7 @@ function TodoList({
           >
             {todo.text}
           </span>
-          <DeleteButton id={todo.id} handleDeleteTodo={handleDeleteTodo} />
+          <DeleteButton id={todo.id} onDeleteTodo={handleDeleteTodo} />
         </li>
       ))}
     </ul>

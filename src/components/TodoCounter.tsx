@@ -1,12 +1,10 @@
-type TodoCounterProps = {
-  totalNumberOfTodos: number;
-  numberOfCompletedTodos: number;
-};
+import { useContext } from "react";
+import { TodoContext } from "../contexts/TodosContextProvider";
 
-function TodoCounter({
-  totalNumberOfTodos,
-  numberOfCompletedTodos,
-}: TodoCounterProps) {
+function TodoCounter() {
+  const { numberOfCompletedTodos, totalNumberOfTodos } =
+    useContext(TodoContext);
+
   return (
     <p>
       <b> {numberOfCompletedTodos} </b> / {totalNumberOfTodos} todos completed

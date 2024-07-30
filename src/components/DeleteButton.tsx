@@ -1,15 +1,15 @@
 type DeleteButtonProps = {
   id: number;
-  handleDeleteTodo: (id: number) => void;
+  onDeleteTodo: (id: number) => void;
 };
 
-function DeleteButton({ id, handleDeleteTodo }: DeleteButtonProps) {
+function DeleteButton({ id, onDeleteTodo }: DeleteButtonProps) {
   return (
     <button
       className=" opacity-50 hover:opacity-100 transition-opacity "
       onClick={(event) => {
         event.stopPropagation();
-        handleDeleteTodo(id);
+        onDeleteTodo(id);
       }}
     >
       ❌
