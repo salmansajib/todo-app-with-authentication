@@ -8,14 +8,20 @@ function AddTodoForm({ todos, setTodos }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        setTodos((prev) => [
-          ...prev,
-          {
-            id: prev.length + 1,
-            text: todoText,
-            completed: false,
-          },
-        ]);
+
+        if (todos.length >= 3) {
+          alert("Log in to add more than 3 todos");
+        } else {
+          setTodos((prev) => [
+            ...prev,
+            {
+              id: prev.length + 1,
+              text: todoText,
+              completed: false,
+            },
+          ]);
+        }
+
         setTodoText("");
       }}
     >

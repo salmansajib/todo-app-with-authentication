@@ -7,28 +7,7 @@ import Sidebar from "./components/Sidebar";
 import TodoList from "./components/TodoList";
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: "buy groceries",
-      completed: false,
-    },
-    {
-      id: 2,
-      text: "walk the dog",
-      completed: false,
-    },
-    {
-      id: 3,
-      text: "do laundry",
-      completed: true,
-    },
-    {
-      id: 4,
-      text: "exercise",
-      completed: false,
-    },
-  ]);
+  const [todos, setTodos] = useState([]);
 
   return (
     <div className="font-sans flex flex-col justify-center items-center bg-[#f1d4b3] min-h-screen">

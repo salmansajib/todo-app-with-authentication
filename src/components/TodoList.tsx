@@ -3,6 +3,12 @@ import DeleteButton from "./DeleteButton";
 function TodoList({ todos, setTodos }) {
   return (
     <ul>
+      {todos.length === 0 && (
+        <li className=" h-full flex items-center justify-center font-medium text-xl ">
+          Start by adding a todo...
+        </li>
+      )}
+
       {todos.map((todo) => (
         <li
           key={todo.id}
