@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 
-function AddTodoForm({ todos, setTodos }) {
+function AddTodoForm({ todos, handleAddTodo }) {
   const [todoText, setTodoText] = useState("");
 
   return (
@@ -9,18 +9,7 @@ function AddTodoForm({ todos, setTodos }) {
       onSubmit={(e) => {
         e.preventDefault();
 
-        if (todos.length >= 3) {
-          alert("Log in to add more than 3 todos");
-        } else {
-          setTodos((prev) => [
-            ...prev,
-            {
-              id: prev.length + 1,
-              text: todoText,
-              completed: false,
-            },
-          ]);
-        }
+        handleAddTodo(todoText);
 
         setTodoText("");
       }}
