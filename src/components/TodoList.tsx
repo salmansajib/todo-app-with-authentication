@@ -1,6 +1,17 @@
+import { Todo } from "../App";
 import DeleteButton from "./DeleteButton";
 
-function TodoList({ todos, handleToggleCompleted, handleDeleteTodo }) {
+type TodoListProps = {
+  todos: Todo[];
+  handleToggleCompleted: (id: number) => void;
+  handleDeleteTodo: (id: number) => void;
+};
+
+function TodoList({
+  todos,
+  handleToggleCompleted,
+  handleDeleteTodo,
+}: TodoListProps) {
   return (
     <ul>
       {todos.length === 0 && (

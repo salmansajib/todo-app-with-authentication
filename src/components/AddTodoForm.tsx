@@ -1,16 +1,18 @@
 import { useState } from "react";
 import Button from "./Button";
 
-function AddTodoForm({ todos, handleAddTodo }) {
+type AddTodoFormProps = {
+  handleAddTodo: (todoText: string) => void;
+};
+
+function AddTodoForm({ handleAddTodo }: AddTodoFormProps) {
   const [todoText, setTodoText] = useState("");
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-
         handleAddTodo(todoText);
-
         setTodoText("");
       }}
     >

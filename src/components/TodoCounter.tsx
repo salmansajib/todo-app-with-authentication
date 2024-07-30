@@ -1,8 +1,15 @@
-function TodoCounter({ todos }) {
+type TodoCounterProps = {
+  totalNumberOfTodos: number;
+  numberOfCompletedTodos: number;
+};
+
+function TodoCounter({
+  totalNumberOfTodos,
+  numberOfCompletedTodos,
+}: TodoCounterProps) {
   return (
     <p>
-      <b> {todos.filter((todo) => todo.completed).length} </b> / {todos.length}{" "}
-      todos completed
+      <b> {numberOfCompletedTodos} </b> / {totalNumberOfTodos} todos completed
     </p>
   );
 }
