@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Todo } from "../lib/types";
 
 type TodoContextProviderProps = {
@@ -16,9 +16,18 @@ type TTodosContext = {
 
 export const TodoContext = createContext<TTodosContext | null>(null);
 
+const getInitialTodos = () => {
+  const savedTodos = localStorage.getItem("todos");
+  if (savedTodos) {
+    return JSON.parse(savedTodos);
+  } else {
+    return [];
+  }
+};
+
 function TodosContextProvider({ children }: TodoContextProviderProps) {
   // states
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>(getInitialTodos);
 
   // derived state
   const totalNumberOfTodos = todos.length;
@@ -56,6 +65,11 @@ function TodosContextProvider({ children }: TodoContextProviderProps) {
   const handleDeleteTodo = (id: number) => {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   };
+
+  // side effects
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <TodoContext.Provider
