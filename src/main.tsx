@@ -12,12 +12,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       domain="https://salmandev.kinde.com"
       redirectUri={
         process.env.NODE_ENV === "production"
-          ? "http://new-todo-app-with-authentication.vercel.app"
+          ? "https://new-todo-app-with-authentication.vercel.app"
           : "http://localhost:5173"
       }
       logoutUri={
         process.env.NODE_ENV === "production"
-          ? "http://new-todo-app-with-authentication.vercel.app"
+          ? "https://new-todo-app-with-authentication.vercel.app"
           : "http://localhost:5173"
       }
     >
